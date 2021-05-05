@@ -1,12 +1,36 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+
+import firebase from 'firebase/app'
+import { ThemeProvider } from 'styled-components';
+import * as theme from './components/config/theme';
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
+
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyCC-K63PB3tYmjheqqXT66QLV_oWFtbcXo",
+    authDomain: "awesome-project-11266.firebaseapp.com",
+    projectId: "awesome-project-11266",
+    storageBucket: "awesome-project-11266.appspot.com",
+    messagingSenderId: "39786979202",
+    appId: "1:39786979202:web:02764efc653c5df01b799b",
+    measurementId: "G-EZ4683V9GH"
+  };
+
+  //debugger;
+firebase.initializeApp(firebaseConfig);
+
+render(
+  
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme ={theme}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
