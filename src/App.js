@@ -2,8 +2,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
-} from "react-router-dom";
+} from "react-router-dom"
 
 /* PAGES */
 import LoginPage from './pages/login';
@@ -13,11 +12,13 @@ import MyWeekPage from './pages/myweek';
 import RecipePage from './pages/recipe';
 import MyProfile from './pages/myprofile';
 
+
 /* COMPONENTS */
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
 
 export default function App() {
+
   return (
     <Router>
       <div>

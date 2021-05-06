@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../../components/button';
 import LoginImage from '../../components/assets/Login.png';
 import { darkenPrimary, lightgrey, mediumgrey, primaryColor, secondaryColor, white} from '../../components/config/theme';
-import { Link } from 'react-router-dom';
+
 
 export const LoginWrapper = styled.div`
     display: flex;
