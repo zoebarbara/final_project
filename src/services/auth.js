@@ -8,7 +8,7 @@ export async function singup(email, password) {
     return { success: true, data: result.user.uid };
   } catch (error) {
     console.log('IMTCHLG ~ file: auth.js ~ line 8 ~ singup ~ error', error);
-    return { success: false };
+    return { success: false, message: error.code };
   }
 }
 

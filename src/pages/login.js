@@ -22,32 +22,13 @@ import { login } from '../services/auth.js';
 
 function Login() {
 
- /*  const [user, setUser] = useState('');
-  const [surname, setSurname] = useState('');
-  const [birthdate, setBirthdate] = useState('');
-  const [email, setEmail] = useState('');
-  const [password,setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [hasAccount, setHasAccount]= useState(false);
+    const ERROR_MESSAGES ={
+        'auth/wrong-password': 'Usuario y/o contraseña incorrectos',
+        'auth/invalid-email': 'Email no válido',
+        'auth/all-fields-mandatory': 'Todos los campos son obligatorios',
+        'auth/too-many-requests': 'Cuenta deshabilitada por seguridad. Intente de nuevo más tarde'
+    }
 
-  const handleLogin = ()=> {
-    firebase
-        .auth()
-        .signInWithEmailAndPassword(email,password)
-        .catch((error) => {
-            switch (error.code) {
-                case 'auth/invalid-email':
-                case 'auth/user-disabled':
-                case 'auth/user-not-found':
-                    setEmailError(err.message);
-                    break;
-                case 'auth/wrong-password':
-                    setPasswordError(err.message);
-                    break;
-            }
-        });
-    }; */
 
 
     const history = useHistory();

@@ -27,7 +27,8 @@ export const SignUpImage = styled.img`
 `
 export const FormWrapper = styled.div`
     width: 45%;
-    height: 90vh;
+    padding: 30px 0px;
+    //height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,7 +85,7 @@ export const ForgotPass = styled.a`
 `
 export const PasswordWrapper = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 10px 0px;
     font-size: 0.7rem;
     align-items: center;
@@ -95,4 +96,8 @@ export const Checkbox = styled.div`
     align-items: center;
     justify-content: center;
     margin: auto;
+`
+export const ErrorMessage = styled.p`
+    color: red;
+    font-weight: 700;
 `

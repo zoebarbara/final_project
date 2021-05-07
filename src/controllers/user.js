@@ -6,15 +6,15 @@ const USER_COLLECTION = 'profiles';
 
 export async function userSignup(userData) {
   const { name, lastname, email, password } = userData;
-  const { success: signupSuccess, data } = await singup(email, password);
+  const { success: signupSuccess, data, message } = await singup(email, password);
 
   if (signupSuccess) {
     const profileSuccess = await createObjectWithId(USER_COLLECTION, { name, lastname, email }, data);
     if (profileSuccess.success) {
-      return true;
+      return ({success:true});
     }
   }
-  return false;
+  return ({success: false, error: message});
 }
 
 export async function getUserProfile(userId) {

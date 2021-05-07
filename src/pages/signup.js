@@ -10,7 +10,8 @@ import { LoginWrapper,
     ButtonLogin,
     ButtonGoogle,
     PasswordWrapper,
-    Checkbox
+    Checkbox,
+    ErrorMessage
    } from '../pages/layouts/signuplayout.js';
 
 import GoogleIcon from '../components/assets/Google_icon.png';
@@ -28,36 +29,49 @@ function SignUp() {
     const [emailConfirmation, setEmailConfirmation] = useState('');
     const [password,setPassword] = useState('');
     const [passwordConfirmation,setPasswordConfirmation] = useState('');*/
+    
+    /*const [hasAccount, setHasAccount]= useState(false); */
+    
+    const [errorMessage, setErrorMessage] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
-    /*const [hasAccount, setHasAccount]= useState(false); */
-
     const history = useHistory();
     const [formData, setFormData] = useState({ name: '', lastname: '', email: '', password: '' , emailConfirmation:'', passwordConfirmation:''});
+
+    const ERROR_MESSAGES ={
+        'auth/wrong-password': 'Usuario y/o contraseña incorrectos',
+        'auth/invalid-email': 'Email no válido',
+        'auth/all-fields-mandatory': 'Todos los campos son obligatorios',
+        'auth/too-many-requests': 'Cuenta deshabilitada por seguridad. Intente de nuevo más tarde'
+    }
+
 
   const handleSignUp = async (event) => {
       event.preventDefault();
       debugger;
         if (formData.email !== formData.emailConfirmation){
-            setEmailError('Los emails no coinciden')
-            console.log(setEmailError);
+            setErrorMessage('Los emails no coinciden')
+            console.log(setErrorMessage);
             return
         }
 
         if (formData.password !== formData.passwordConfirmation){
-            setPasswordError('Las contraseñas no coinciden')
-            console.log(setPasswordError)
+            setErrorMessage('Las contraseñas no coinciden')
+            console.log(setErrorMessage)
             return
         }   
 
         
-        const result = await userSignup(formData);
+        const {success , error } = await userSignup(formData);
         
-        console.log(result);
-        if (result) {
+        
+        if (success) {
             history.push('/myprofile');
+        }else{
+            setErrorMessage(error);
+            }
         }
-    }
+  
  
   
 
@@ -77,10 +91,10 @@ return(
                 </InputLogin>
                <InputLogin 
                     placeholder='Apellidos'
-                    label="surname"
-                    name="surname"
-                    value={formData.surname}
-                    onChange={(event) => setFormData({ ...formData, surname: event.target.value })}>  
+                    label="lastname"
+                    name="lastname"
+                    value={formData.lastname}
+                    onChange={(event) => setFormData({ ...formData, lastname: event.target.value })}>  
                </InputLogin>
                <InputLogin 
                     placeholder='Fecha de Nacimiento'
@@ -122,9 +136,9 @@ return(
                </InputLogin>
 
                <PasswordWrapper>
-                    
                     <ForgotPass>¿Ya eres miembro? Haz login</ForgotPass>
-               </PasswordWrapper>_
+                    <ErrorMessage>{errorMessage !== '' ?  ERROR_MESSAGES[errorMessage] : ''}</ErrorMessage>
+               </PasswordWrapper>
                <ButtonLogin onClick={handleSignUp}>Sign Up</ButtonLogin>
                <ButtonGoogle><img src={GoogleIcon} style={{margin:' 0px 5px 0px 0px'}} alt ='Google icon'/>Sign up with Google</ButtonGoogle>
            </FormLogin>
